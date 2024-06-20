@@ -34,9 +34,9 @@ function App() {
             setDev(Math.round((aux - ext) * 1000 * 100));
    
             if( close > 0 )
-                alert( " your sensitivty is " + dev + " more close from " + aux + " than " + ((dev/100)-1) + "from" + (aux+1) )
+                alert( " your sensitivty is " + dev + " more close from " + aux + " than " + ((dev/100)-1) + "from" + (aux-0.001) )
             else
-                alert( " your sensitivty is " + ((dev/100)+1) + " more close from " + aux + " than " + dev + "from" + (aux-1) )
+                alert( " your sensitivty is " + ((dev/100)+1) + " more close from " + aux + " than " + dev + "from" + (aux+0.001) )
         } else if (newsens != undefined) {
 
             ext = (dpi * sens) / newsens;
