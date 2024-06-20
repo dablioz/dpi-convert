@@ -28,10 +28,15 @@ function App() {
 
             ext = (dpi * sens) / newdpi;
             aux = Math.round(ext * 1000) / 1000;
-
+            let close = Math.round((aux - ext) * 1000 * 100)
+            
             setPau(aux);
             setDev(Math.round((aux - ext) * 1000 * 100));
-
+   
+            if( close > 0 )
+                alert( " your sensitivty is " + dev + " more close from " + aux + " than " + ((dev/100)-1) + "from" + (aux+1) )
+            else
+                alert( " your sensitivty is " + ((dev/100)+1) + " more close from " + aux + " than " + dev + "from" + (aux-1) )
         } else if (newsens != undefined) {
 
             ext = (dpi * sens) / newsens;
