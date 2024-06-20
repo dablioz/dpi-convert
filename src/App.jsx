@@ -17,6 +17,7 @@ function App() {
 
     var ext;
     var aux;
+    var message;
 
     useEffect(() => {
         // console.log("ai");
@@ -25,25 +26,38 @@ function App() {
 
     function convert() {
         if (newdpi != undefined) {
-
             ext = (dpi * sens) / newdpi;
             aux = Math.round(ext * 1000) / 1000;
-            let close = Math.round((aux - ext) * 1000 * 100)
-            
-            setPau(aux);
-            setDev(Math.round((aux - ext) * 1000 * 100));
-   
-            if( close > 0 )
-                alert( " your sensitivty is " + dev + " more close from " + aux + " than " + ((dev/100)-1) + "from" + (aux-0.001) )
-            else
-                alert( " your sensitivty is " + ((dev/100)+1) + " more close from " + aux + " than " + dev + "from" + (aux+0.001) )
-        } else if (newsens != undefined) {
+            let close = Math.round((aux - ext) * 1000 * 100);
 
+            setPau(aux);
+
+            console.log(close);
+            if (close != 0)
+                if (close > 0)
+                    setDev(
+                        " your sensitivty is " +
+                            close +
+                            "% more close from " +
+                            aux +
+                            " than from " +
+                            (aux - 0.001)
+                    );
+                else
+                    setDev(
+                        " your sensitivty is " +
+                            (close / 100 + 1) * 100 +
+                            "% closer from " +
+                            aux +
+                            " than from " +
+                            (aux + 0.001)
+                    );
+        } else if (newsens != undefined) {
             ext = (dpi * sens) / newsens;
             aux = Math.round(ext);
 
             setPau(aux);
-            console.log((aux % 50) / 50)
+            console.log((aux % 50) / 50);
         }
     }
 
@@ -64,7 +78,6 @@ function App() {
                 </div>
 
                 <h1>Vite + React</h1>
-
             </div>
 
             <div>
@@ -103,7 +116,7 @@ function App() {
                 />
             </div>
             <p>Your new Dpi or Sensitivity is: {pau}</p>
-            <p>Deviation: {dev}% (disabled for new dpi's)</p>
+            <p>{dev}</p>
         </>
     );
 }
