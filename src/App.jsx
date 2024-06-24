@@ -37,7 +37,7 @@ function App() {
                 if (close > 0)
                     setDev(
                         " your sensitivty is " +
-                            close +
+                            (close / 100 + 1) * 100 +
                             "% more close from " +
                             aux +
                             " than from " +
