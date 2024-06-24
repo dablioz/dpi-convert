@@ -37,11 +37,11 @@ function App() {
                 if (close > 0)
                     setDev(
                         " your sensitivty is " +
-                            (close / 100 + 1) * 100 +
+                            (close / 100 - 1) * -100 +
                             "% more close from " +
-                            aux +
+                            (aux - 0.001) +
                             " than from " +
-                            (aux - 0.001)
+                            aux
                     );
                 else
                     setDev(
@@ -57,7 +57,6 @@ function App() {
             aux = Math.round(ext);
 
             setPau(aux);
-            console.log((aux % 50) / 50);
         }
     }
 
